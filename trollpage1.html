@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>System Boot</title>
+<style>
+  body{background:#000;color:#0f0;font-family:monospace;padding:20px}
+  pre{white-space:pre-wrap;font-size:16px}
+</style>
+</head>
+<body>
+  <!-- Troll Page 1 - Fake System Boot Sequence -->
+<pre id="t"></pre>
+<script>
+const lines = [
+  "Initializing neural confetti module...",
+  "Loading excuses for tomorrow's assignment...",
+  "Calibrating cat meme generator v2.4",
+  "Warning: Too many snacks detected",
+  "Mounting /reality (read-only)",
+  "All systems nominal. Just kidding."
+];
+const el = document.getElementById('t');
+let i=0;
+function typeLine(text, cb){
+  let j=0;
+  const int=setInterval(()=>{ el.textContent += text[j++] ; if(j>=text.length){ clearInterval(int); el.textContent+='\n'; cb(); } }, 25);
+}
+function loop(){
+  if(i>=lines.length) i=0;
+  typeLine(lines[i++], ()=> setTimeout(loop, 600));
+}
+loop();
+</script>
+</body>
+</html>
